@@ -1,5 +1,6 @@
 "use strict";
 const moment = require('moment');
+const {ipcRenderer} = require('electron');
 
 const secondsToTime = (s) => {
     let momentTime = moment.duration(s, 'seconds');
@@ -9,16 +10,17 @@ const secondsToTime = (s) => {
     return `${min}:${sec}`;
 };
 
-let currentTime = 255;
-
-timerDiv.innerHTML = secondsToTime(currentTime);
-
-let timer = setInterval(() => {
-    currentTime = currentTime-1;
-
+ipcRenderer.on('timer-change', (event, t) => {
+    let currentTime = t;
     timerDiv.innerHTML = secondsToTime(currentTime);
 
-    if(currentTime <= 0){
-        clearInterval(timer);
-    }
-}, 1000);
+    let timer = setInterval(() => {
+        currentTime = currentTime-1;
+
+        timerDiv.innerHTML = secondsToTime(currentTime);
+
+        if(currentTime <= 0){
+            clearInterval(timer);
+        }
+    }, 1000);
+});

@@ -8,6 +8,8 @@ const {BrowserWindow} = electron;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
+let argsCmd = process.argv.slice(2);
+let timerTime = parseInt(argsCmd[0]) || 60;
 
 function createWindow() {
     // Create the browser window.
@@ -21,9 +23,9 @@ function createWindow() {
     // and load the index.html of the app.
     win.loadURL(`file://${__dirname}/app/index.html`);
 
-    // Open the DevTools.
-    //win.webContents.openDevTools();
-
+    win.webContents.on('did-finish-load', () => {
+        win.webContents.send('timer-change', timerTime);
+    });
     // Emitted when the window is closed.
     win.on('closed', () => {
         // Dereference the window object, usually you would store windows
