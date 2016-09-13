@@ -1,6 +1,6 @@
 "use strict";
 const moment = require('moment');
-const {ipcRenderer} = require('electron');
+const {ipcRenderer, remote } = require('electron');
 
 const secondsToTime = (s) => {
     let momentTime = moment.duration(s, 'seconds');
@@ -24,4 +24,23 @@ ipcRenderer.on('timer-change', (event, t) => {
             clearInterval(timer);
         }
     }, 1000);
+});
+
+document.getElementById("min-btn").addEventListener("click", function () {
+    var window = remote.getCurrentWindow();
+    window.minimize();
+});
+
+document.getElementById("max-btn").addEventListener("click", function () {
+    var window = remote.getCurrentWindow();
+    if (!window.isMaximized()) {
+        window.maximize();
+    } else {
+        window.unmaximize();
+    }
+});
+
+document.getElementById("close-btn").addEventListener("click", function () {
+    var window = remote.getCurrentWindow();
+    window.close();
 });
