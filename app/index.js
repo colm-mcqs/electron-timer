@@ -20,6 +20,7 @@ ipcRenderer.on('timer-change', (event, t) => {
         timerDiv.innerHTML = secondsToTime(currentTime);
 
         if(currentTime <= 0){
+            document.getElementById('timerDiv').className += ' timer-end';
             clearInterval(timer);
         }
     }, 1000);

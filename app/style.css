@@ -14,3 +14,8 @@ html, body {
     color: #D7ECFF;
     text-shadow: 0 0 2px #fff, 0 0 6px #fff, 0 0 10px #fff, 0 0 15px #228DFF, 0 0 25px #228DFF, 0 0 30px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF;
 }
+
+.timer-end{
+    color: #880000;
+    text-shadow: 0 0 2px #fff, 0 0 6px #fff, 0 0 10px #fff, 0 0 15px #ff5454, 0 0 25px #ff5454, 0 0 30px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF;
+}
