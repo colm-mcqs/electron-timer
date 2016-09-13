@@ -4,7 +4,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electromon .",
-    "pack": "electron-packager . --all"
+    "pack": "electron-packager . --platform=win32 --arch=x64 --icon=icon.ico"
   },
   "devDependencies": {
     "electron-builder": "^6.7.3",

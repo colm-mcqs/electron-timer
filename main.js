@@ -18,7 +18,7 @@ function createWindow() {
         height: 300,
         frame: false,
         resizable: false,
-        icon: './icon.png'
+        icon: './icon.ico'
     });
 
     // and load the index.html of the app.
